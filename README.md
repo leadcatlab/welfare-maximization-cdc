@@ -32,6 +32,6 @@ The code to run the simulations is in the `simulations` subfolder. We make a cop
 ## Running the POMDP
 
 1. Make sure that you generate dynamics for all 15 components using the `generate_dynamics_data.ipynb` notebook.
-2. Open the `POMDP_parallel.ipynb` notebook and set the component IDs you want to run the simulations for the in the component_ids_list **Missing notebook - to be updated**
+2. Open the `POMDP_parallel.ipynb` notebook and set the indices (in order of rows in the csv file) you want to run in the `indices_to_run` array. 
 
 
