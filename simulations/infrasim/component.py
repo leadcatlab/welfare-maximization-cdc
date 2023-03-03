@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import weibull_min
+import scipy.stats as stats
 import seaborn as sns
 
 class Component:
@@ -66,8 +66,10 @@ class Component:
         Synthesize transition dynamics from the given state in the absence of maintenance action
         """
         probs = np.zeros(self.num_states)
+
         for next_state in range(state,-1,-1):
-            probs[next_state] = weibull_min.pdf(101-next_state+1, self.dynamics_shape , scale=self.dynamics_scale, loc=101-state)
+            # weibull distribution local
+            probs[next_state] =  stats.weibull_min.pdf(101-next_state+1, self.dynamics_shape , scale=self.dynamics_scale)
         probs = probs/np.sum(probs)
         return probs
 
