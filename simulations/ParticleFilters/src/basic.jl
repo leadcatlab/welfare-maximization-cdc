@@ -44,6 +44,11 @@ This should usually be an empty `Vector{S}` where `S` is the type of the state f
 function particle_memory end
 
 function update(up::BasicParticleFilter, b::ParticleCollection, a, o)
+
+    if all( isterminal(up.predict_model, s) for s in particles(b))
+        return b
+    end
+
     pm = up._particle_memory
     wm = up._weight_memory
     resize!(pm, n_particles(b))
